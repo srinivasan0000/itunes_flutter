@@ -4,6 +4,7 @@ import '../../../route_management/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+
 class SplashScreen extends ConsumerStatefulWidget {
   const SplashScreen({super.key});
 
@@ -23,7 +24,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     if (isJailBroken) {
       ref.read(routerProvider).goNamed(Routes.jailBrake.name);
     } else {
-      ref.read(routerProvider).goNamed(Routes.jailBrake.name);
+      ref.read(routerProvider).goNamed(Routes.home.name);
     }
   }
 
