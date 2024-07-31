@@ -1,0 +1,159 @@
+{
+    "workbench.colorCustomizations": {
+        "[Default Dark+ Experimental]": {
+            "editor.background": "#000000",
+            "sideBar.background": "#000000",
+            "sideBar.border": "#313131",
+            "panel.background": "#111111"
+        },
+        "[Default Dark Modern]": {
+            "editor.background": "#000000",
+            "activityBar.activeBackground": "#222020",
+            "panel.background": "#030303",
+            "panel.dropBorder": "#ff0000",
+            "panelInput.border": "#001885",
+            "panelSection.border": "#b9b9b9",
+            "panelTitle.inactiveForeground": "#8f8a8a",
+            "sideBar.background": "#080808",
+            "sideBarSectionHeader.background": "#18181a"
+        }
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/*.freezed.dart": true,
+        "**/*.g.dart": true
+    },
+    "[dart]": {
+        "editor.rulers": [
+            130
+        ]
+    },
+    "dart.experimentalRefactors": true,
+    "dart.previewHotReloadOnSaveWatcher": true,
+    "dart.lineLength": 180,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.previewFlutterUiGuides": true,
+    "dart.documentation": "full",
+    "dart.flutterHotReloadOnSave": "all",
+    "editor.formatOnSave": true,
+    "window.zoomLevel": 1,
+    "dart.debugExternalPackageLibraries": false,
+    "dart.debugSdkLibraries": false,
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "Bug",
+            "color": "#FF0000",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "myReference",
+            "color": "#EDD92E",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "Done_BY",
+            "color": "#2EED98",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "CHANGED_BY",
+            "color": "#FF0000",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "UPDATED_BY",
+            "color": "#FF0000",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "InReview",
+            "color": "#DA21F6",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        }
+    ],
+    "terminal.integrated.stickyScroll.enabled": true,
+    "bloc.newCubitTemplate.type": "equatable",
+    "codesnap.showLineNumbers": false,
+    "codesnap.containerPadding": "0em",
+    "files.autoSave": "afterDelay",
+    "breadcrumbs.enabled": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.dart": "${capture}.g.dart, ${capture}.freezed.dart, ${capture}.config.dart"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+}
