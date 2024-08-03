@@ -1,12 +1,58 @@
 import 'package:assessment_itunes/src/core/extensions/material_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:just_audio/just_audio.dart';
 import '../data/itunes_search_dto.dart';
 
-class SongDescriptionPage extends StatelessWidget {
+class SongDescriptionPage extends StatefulWidget {
   const SongDescriptionPage({super.key, required this.result});
 
   final ItunesSearchResult result;
+
+  @override
+  State<SongDescriptionPage> createState() => _SongDescriptionPageState();
+}
+
+class _SongDescriptionPageState extends State<SongDescriptionPage> {
+  late AudioPlayer _audioPlayer;
+  bool _isPlaying = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _audioPlayer = AudioPlayer();
+    _initAudioPlayer();
+  }
+
+  Future<void> _initAudioPlayer() async {
+    if (widget.result.previewUrl != null) {
+      await _audioPlayer.setUrl(widget.result.previewUrl!);
+      _audioPlayer.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          setState(() {
+            _isPlaying = false;
+          });
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  void _togglePlay() {
+    if (_isPlaying) {
+      _audioPlayer.pause();
+    } else {
+      _audioPlayer.play();
+    }
+    setState(() {
+      _isPlaying = !_isPlaying;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +72,7 @@ class SongDescriptionPage extends StatelessWidget {
                   fit: StackFit.expand,
                   children: [
                     Image.network(
-                      result.artworkUrl100
+                      widget.result.artworkUrl100
                               ?.replaceAll('100x100bb', '600x600bb') ??
                           '',
                       fit: BoxFit.cover,
@@ -56,7 +102,7 @@ class SongDescriptionPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        result.trackName ?? 'Unknown Track',
+                        widget.result.trackName ?? 'Unknown Track',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -65,7 +111,7 @@ class SongDescriptionPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        result.artistName ?? 'Unknown Artist',
+                        widget.result.artistName ?? 'Unknown Artist',
                         style: TextStyle(
                           fontSize: 18,
                           color: context.colorTheme.onSurface,
@@ -73,13 +119,13 @@ class SongDescriptionPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
                       _buildInfoRow(context, Icons.album, 'Album',
-                          result.collectionName ?? 'Unknown'),
+                          widget.result.collectionName ?? 'Unknown'),
                       _buildInfoRow(context, Icons.calendar_today, 'Released',
-                          _formatDate(result.releaseDate)),
+                          _formatDate(widget.result.releaseDate)),
                       _buildInfoRow(context, Icons.music_note, 'Genre',
-                          result.primaryGenreName ?? 'Unknown'),
+                          widget.result.primaryGenreName ?? 'Unknown'),
                       _buildInfoRow(context, Icons.timer, 'Duration',
-                          _formatDuration(result.trackTimeMillis)),
+                          _formatDuration(widget.result.trackTimeMillis)),
                       const SizedBox(height: 32),
                       _buildPlayerControls(context),
                     ],
@@ -139,11 +185,12 @@ class SongDescriptionPage extends StatelessWidget {
             color: Theme.of(context).primaryColor,
           ),
           child: IconButton(
-            icon: Icon(Icons.play_arrow,
-                color: context.colorTheme.onSurface, size: 48),
-            onPressed: () {
-              // Use later
-            },
+            icon: Icon(
+              _isPlaying ? Icons.pause : Icons.play_arrow,
+              color: context.colorTheme.onSurface,
+              size: 48,
+            ),
+            onPressed: widget.result.previewUrl != null ? _togglePlay : null,
           ),
         ),
         const SizedBox(width: 16),

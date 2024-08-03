@@ -1,6 +1,8 @@
 class ApiConstant {
   ApiConstant._();
-  static const baseUrl = String.fromEnvironment('baseUrl');
+  static const baseUrl = "https://itunes.apple.com/";
+  
+  // static const baseUrl = String.fromEnvironment('baseUrl');
   // flutter build apk --release --dart-define=BASE_URL=$BASE_URL
 
   static const search = "search";
